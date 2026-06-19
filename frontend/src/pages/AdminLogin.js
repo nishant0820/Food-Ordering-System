@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { FaUser, FaLock, FaSignInAlt } from 'react-icons/fa'
 import "../styles/admin.css"
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLogin = () => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
+
     <div className="d-flex justify-content-center align-items-center vh-100" style={{backgroundImage: "url('/images/adminbg.png')", backgroundSize:'cover'}}>
         <div className='card p-4 shadow-lg rounded' style={{maxWidth: "400px", width:"100%"}}>
           <h4 className='text-center mb-4'>
@@ -15,14 +22,14 @@ const AdminLogin = () => {
               <label className="form-label">
                 <FaUser className="me-1 icon-fix" /> Username
               </label>
-              <input type="text" className="form-control" placeholder="Enter admin username" required />
+              <input type="text" className="form-control" value={username} onChange={(e)=>setUsername(e.target.value)} placeholder="Enter admin username" required />
             </div>
 
             <div className="mb-3">
               <label className="form-label">
                 <FaLock className="me-1 icon-fix" /> Password
               </label>
-              <input type="password" className="form-control" placeholder="Enter password" required />
+              <input type="password" className="form-control" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter password" required />
             </div>
 
             <button type="submit" className="btn btn-primary w-100 mt-3">
