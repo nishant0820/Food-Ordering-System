@@ -9,15 +9,35 @@ const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  return (
+  const handleLogin = async(e) => {
+    e.preventDefault();
+    const response = await fetch('http://127.0.0.1:8000/api/admin-login/',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify({username, password})
+    });
 
+    const data = await response.json();
+
+    if(response.status === 200){
+      setTimeout(()=>{
+        toast.success(data.message)
+        window.location.href = '/admin-dashboard'
+      },2000)
+    }
+    else{
+      toast.error(data.message)
+    }
+  }
+
+  return (
     <div className="d-flex justify-content-center align-items-center vh-100" style={{backgroundImage: "url('/images/adminbg.png')", backgroundSize:'cover'}}>
         <div className='card p-4 shadow-lg rounded' style={{maxWidth: "400px", width:"100%"}}>
           <h4 className='text-center mb-4'>
             <FaUser className="me-2 icon-fix" />Admin Login
           </h4>
 
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="mb-3">
               <label className="form-label">
                 <FaUser className="me-1 icon-fix" /> Username
@@ -37,6 +57,7 @@ const AdminLogin = () => {
             </button>
           </form>
         </div>
+        <ToastContainer position="top-center" autoClose={2000} />
     </div>
   )
 }
