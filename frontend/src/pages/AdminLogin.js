@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { FaUser, FaLock, FaSignInAlt } from 'react-icons/fa'
-import "../styles/admin.css"
-import { toast, ToastContainer } from 'react-toastify'
+import { FaUser, FaLock, FaSignInAlt } from 'react-icons/fa';
+import "../styles/admin.css";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLogin = () => {
@@ -20,8 +20,8 @@ const AdminLogin = () => {
     const data = await response.json();
 
     if(response.status === 200){
+      toast.success(data.message)
       setTimeout(()=>{
-        toast.success(data.message)
         window.location.href = '/admin-dashboard'
       },2000)
     }
@@ -57,9 +57,9 @@ const AdminLogin = () => {
             </button>
           </form>
         </div>
-        <ToastContainer position="top-center" autoClose={2000} />
+        <ToastContainer position="top-right" autoClose={2000} />
     </div>
   )
 }
 
-export default AdminLogin
+export default AdminLogin;
