@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { FaEdit, FaThLarge, FaUsers } from 'react-icons/fa';
+import { FaEdit, FaThLarge, FaUsers, FaChevronUp, FaChevronDown, FaList, FaFile, FaSearch, FaCommentAlt } from 'react-icons/fa';
 
 const AdminSidebar = () => {
 
@@ -21,7 +21,7 @@ const AdminSidebar = () => {
             </div>
 
             <div className="list-group list-group-flush">
-                <Link className="list-group-item list-group-item-action bg-dark text-white">
+                <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
                     <FaThLarge /> Dashboard
                 </Link>
 
@@ -31,52 +31,92 @@ const AdminSidebar = () => {
                     </Link>
                 </div>
 
-                <button onClick={() => toggleMenu('category')} className="list-group-item list-group-item-action bg-dark text-white">
-                    <FaEdit /> Food Category
+                <button onClick={() => toggleMenu('category')} className="list-group-item list-group-item-action bg-dark text-white border-0">
+                    <FaEdit /> Food Category {openMenus.category ? <FaChevronUp /> : <FaChevronDown />}
                 </button>
 
                 {openMenus.category && (
                     <div className="ps-4">
-                        <Link className="list-group-item list-group-item-action bg-dark text-white">
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
                             Add Category
                         </Link>
 
-                        <Link className="list-group-item list-group-item-action bg-dark text-white">
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
                             Manage Category
                         </Link>
                     </div>
                 )}
 
-                <button onClick={() => toggleMenu('food')} className="list-group-item list-group-item-action bg-dark text-white">
-                    <FaEdit /> Food Item
+                <button onClick={() => toggleMenu('food')} className="list-group-item list-group-item-action bg-dark text-white border-0">
+                    <FaEdit /> Food Menu {openMenus.food ? <FaChevronUp /> : <FaChevronDown />}
                 </button>
 
                 {openMenus.food && (
                     <div className="ps-4">
-                        <Link className="list-group-item list-group-item-action bg-dark text-white">
-                            Add Food Item
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Add Food
                         </Link>
 
-                        <Link className="list-group-item list-group-item-action bg-dark text-white">
-                            Manage Food Item
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Manage Food
+                        </Link>
+                    </div>
+                )}
+
+                <button onClick={() => toggleMenu('order')} className="list-group-item list-group-item-action bg-dark text-white border-0">
+                    <FaList /> Orders {openMenus.order ? <FaChevronUp /> : <FaChevronDown />}
+                </button>
+
+                {openMenus.order && (
+                    <div className="ps-4">
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Not Confirmed
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Confirmed
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Being Prepared
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Food Pickup
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Delivered
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            Cancelled
+                        </Link>
+
+                        <Link className="list-group-item list-group-item-action bg-dark text-white border-0">
+                            All Orders
                         </Link>
                     </div>
                 )}
 
                 <div className="list-group list-group-flush">
                     <Link className="list-group-item list-group-item-action bg-dark text-white">
-                        <FaThLarge /> Search
+                        <FaFile /> B/w Dates Report
                     </Link>
                 </div>
 
                 <div className="list-group list-group-flush">
                     <Link className="list-group-item list-group-item-action bg-dark text-white">
-                        <FaThLarge /> Manage Reviews
+                        <FaSearch /> Search
+                    </Link>
+                </div>
+
+                <div className="list-group list-group-flush">
+                    <Link className="list-group-item list-group-item-action bg-dark text-white">
+                        <FaCommentAlt /> Manage Reviews
                     </Link>
                 </div>
             </div>
-
-
         </div>
     )
 }

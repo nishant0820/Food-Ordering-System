@@ -20,7 +20,8 @@ const AdminLogin = () => {
     const data = await response.json();
 
     if(response.status === 200){
-      toast.success(data.message)
+      toast.success(data.message);
+      localStorage.setItem("adminUser", username);
       setTimeout(()=>{
         window.location.href = '/admin-dashboard'
       },2000)
